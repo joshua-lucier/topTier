@@ -1,0 +1,8 @@
+{
+  "name": "topTier",
+  "description": "Data Mining Node for Lucier 3 tier robotics system",
+  "author": "Joshua Lucier",
+  "dependencies": {
+  },
+  "engine": "node 0.4.1"
+}
