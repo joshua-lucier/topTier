@@ -20,7 +20,7 @@ connection.query('use topTier;', function(err, rows, fields)
 		if(err) throw err;
 		console.log("Accessed Database");
 	});
-connection.query('drop table inputlog if exists;', function(err, rows, fields)
+connection.query('drop table if exists inputlog;', function(err, rows, fields)
 	{
 		if(err) throw err;
 		console.log("Cleared Table");
