@@ -2,7 +2,7 @@ var request = require('request');
 
 request.post(
 	'http://localhost:8080',
-	{ qs: { 'key' :'dude', 'nonsense' : 'Here we go'}, json: true},
+	{ qs: { 'sensor' :'light', 'unitvalue' : 12}, json: true},
 		function(error, response, body)
 		{
 			if (!error && response.statusCode == 200)
