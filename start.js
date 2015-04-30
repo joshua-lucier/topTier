@@ -1,11 +1,13 @@
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
 var querystring = require('querystring');
 var mysql = require('mysql');
+eval(fs.readFileSync('config.js')+'');
 connection = mysql.createConnection({
-	host : 'localhost',
-	user : 'root',
-	password : 'pizzamonkey'
+	host : HOST,
+	user : USER,
+	password : PASSWORD
 })
 
 function noTouchy()
