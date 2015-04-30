@@ -25,7 +25,7 @@ connection.query('drop table if exists inputlog;', function(err, rows, fields)
 		if(err) throw err;
 		console.log("Cleared Table");
 	});
-connection.query('create table inputlog(id INT PRIMARY KEY AUTO_INCREMENT, SENSOR STRING, VALUE INT, STAMP DATETIME;', function(err, rows, fields)
+connection.query('create table inputlog(id INT AUTO_INCREMENT PRIMARY KEY , SENSOR VARCHAR(40), VALUE INT, LOGTIME TIMESTAMP;', function(err, rows, fields)
 	{
 		if(err) throw err;
 		console.log("Created Table");
