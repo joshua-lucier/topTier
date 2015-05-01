@@ -27,27 +27,37 @@ const PORT=8080;
 
 var server = http.createServer(
 	function(req, res){
-		console.log(req.param);
+		console.log(req.url);
 		var theUrl = url.parse(req.url);
 		var queryObj = querystring.parse(theUrl.query);
 		var obj = queryObj;
-		console.log(obj);
-		var sensor = obj.sensor;
-		var unitvalue = obj.unitvalue;
-		var queryLogString = "insert into inputlog (SENSOR,VALUE) values('"+sensor+"','"+unitvalue+"');";
 		try
 		{
-			connection.query(queryLogString,  function(err, rows, fields)
+			var sensor = obj.sensor;
+			if(obj.unitvalue) 
 			{
-				if(err) throw err;
-				console.log("Logged");
-			});
+				var unitvalue = obj.unitvalue;
+				var queryLogString = "insert into inputlog (SENSOR,VALUE) values('"+sensor+"','"+unitvalue+"');";
+				try
+				{
+					connection.query(queryLogString,  function(err, rows, fields)
+					{
+						if(err) throw err;
+						console.log("Logged");
+					});
+				}
+				catch(e)
+				{
+					console.log("query failed");
+				}
+			}
 		}
 		catch(e)
 		{
-			console.log("query failed");
+			console.log("no valid data");
 		}
-		noTouchy();
+		//noTouchy();
+		res.end();
 		/*var body ='';
 		req.on('data', function(data){
 			body += data;
